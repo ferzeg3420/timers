@@ -58,6 +58,7 @@ a:active {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 80%;
 }
 
 .length-controls {
@@ -85,6 +86,7 @@ a:active {
   /*margin-left: 1.1%;*/
   /*width: 31.1%;*/
   width: 100%;
+  height: 100%;
   max-width: 100%;
   background: royalBlue;
   display: flex;
@@ -98,14 +100,17 @@ a:active {
   margin-left: 1.1%;
   border-radius: 10px;
   width: 31.1%;
-  height: 199px;
+  height: 250px;
   background: transparent;
 }
 
 .start-stop-reset-controls {
+  margin-top: 10px;
+  width: 50%;
+  max-width: 100px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -144,6 +149,7 @@ a:active {
 
 .toggler-and-display {
   width: 45%;
+  margin-bottom: 1.2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -170,6 +176,8 @@ a:active {
 }
 
 .close-symbol-container {
+  width: 100%;
+  height: 10%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -186,7 +194,7 @@ a:active {
   margin-right: 1.1%;
   margin-left: 1.1%;
   width: 31.1%;
-  height: 199px;
+  height: 250px;
   background-color: #AAAABC;
   display: flex;
   flex-direction: column;
@@ -212,7 +220,7 @@ a:active {
      width: 99%;
    }
   .add-timer {
-    height: 199px;
+    height: 250px;
   }
 }
 
@@ -225,7 +233,6 @@ a:active {
   margin-top: 3px;
   background: whitesmoke;
   width: 0%;
-  height: 2px;
+  height: 0.8%;
   border-radius: 5px;
 }
-
