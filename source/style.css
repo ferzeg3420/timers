@@ -161,6 +161,7 @@ a:active {
 }
 
 .close-symbol {
+  cursor: pointer;
   color: white;
   margin-right: 10px;
   font-size: 25px;
@@ -184,6 +185,7 @@ a:active {
 }
 
 .add-timer {
+  cursor: pointer;
   order: 99;
   color: white;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19);

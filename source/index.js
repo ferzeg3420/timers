@@ -43,8 +43,7 @@ let timerColors = [
   }
 ]
 
-console.log('clear')
-localStorage.clear()
+// localStorage.clear()
 
 const localStorageError = localStorage.getItem('localStorageError')
 if (localStorageError === null) {
@@ -60,7 +59,6 @@ if (localStorageError === null) {
 }
 
 function findOrder (timerId, orders) {
-  console.log('findOrder:', timerId, orders)
   if (orders.length === 0) {
     return { order: 98 }
   }
@@ -88,29 +86,22 @@ function addLeadingZero (timeString) {
 }
 
 function findTimerColor (timerId) {
-  console.log('--- findTimerColor: timerId:', timerId)
   const fallbackColor = 'royalBlue'
   for (const item of timerColors) {
     if (!item.isBeingUsed) {
       item.timerId = timerId.toString()
       item.isBeingUsed = true
-      console.log('color:', item.color)
       return item.color
     }
   }
-  console.log('fallbackcolor')
-  console.log('>>timerColors:', timerColors)
   return fallbackColor
 }
 
 function freeTimerColor (timerId) {
-  console.log('&&&&& freeTimerColor', timerId, typeof (timerId))
   for (const item of timerColors) {
-    console.log('&&&&& freeTimer', item.timerId, typeof item.timerId)
     if (parseInt(item.timerId) === timerId) {
       item.timerId = ''
       item.isBeingUsed = false
-      console.log('&&&&& freeingTimerColor', item.timerId)
       break
     }
   }
@@ -170,8 +161,6 @@ class App extends React.Component {
         }
       })
     }
-    console.log('--- componentDidMount:')
-    console.log('this.state.nextTimerId:', this.state.nextTimerId)
   }
 
   componentWillUnmount () {
@@ -199,10 +188,6 @@ class App extends React.Component {
     localStorage.setItem('savedColors', JSON.stringify(colorsToSave))
     localStorage.setItem('savedOrders', JSON.stringify(this.state.orders))
     localStorage.setItem('localStorageError', 'false')
-    console.log('---> componentWillUnmount')
-    console.log('timersToSave', timersToSave)
-    console.log('savedTimer', colorsToSave)
-    console.log('savedOrders', JSON.stringify(this.state.orders))
   }
 
   updateTimerWidths () {
@@ -215,19 +200,18 @@ class App extends React.Component {
   }
 
   handleMessageChange (event, timerId) {
-    this.setState( state => {
+    this.setState(state => {
       const timers = this.state.timers.map((item) => {
         if (item.timerId === parseInt(timerId)) {
           const newItem = item
           newItem.alarmMessage = event.target.value
           return newItem
-        }
-        else {
+        } else {
           return item
         }
       })
       return {
-        timers,
+        timers
       }
     })
   }
@@ -712,9 +696,9 @@ class App extends React.Component {
            ))
          }
          { this.state.timers.length < timerColors.length &&
-         <a href="#" className="add-timer" onClick={this.addTimer}>
+         <div className="add-timer" onClick={this.addTimer}>
            <i className="fas fa-plus plus-symbol"></i>
-         </a>
+         </div>
          }
          <audio id="beep"
                 src={gongURL}
@@ -781,9 +765,9 @@ class Timer extends React.Component {
             <div onMouseDown={(e) => this.props.gripClick(e, this.props.timerId)}>
               <i className='fas fa-grip-horizontal grip-symbol'></i>
             </div>
-            <a href="#" onClick={() => this.props.deleteTimer(this.props.timerId)}>
+            <div onClick={() => this.props.deleteTimer(this.props.timerId)}>
               <i className="far fa-times-circle close-symbol"></i>
-            </a>
+            </div>
           </div>
           <div className="progressBar" style={progressBarWidth}></div>
           <div className="timer-display">
