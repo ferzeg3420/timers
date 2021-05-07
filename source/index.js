@@ -217,7 +217,7 @@ class App extends React.Component {
   }
 
   /* Decreases the running time by one */
-  updateTimer() {
+  updateTimer () {
     this.state.timers.map( (iter) => 
     {
       if (iter === undefined || (!iter.isRunning)) {
@@ -254,7 +254,7 @@ class App extends React.Component {
             }
           })
           return {
-            timers,
+            timers
           }
         })
       } else {
@@ -624,29 +624,27 @@ class App extends React.Component {
         }
         else {
           newOrders.push(
-            {timerId: iter.timerId, order: (elmnOrder).toString()}
-          );
+            { timerId: iter.timerId, order: (elmnOrder).toString() }
+          )
         }
       }
       else {
-        if( elmnOrder <= targetSocketOrder
-         && elmnOrder > fromSocketOrder )
-        {
+        if (elmnOrder <= targetSocketOrder &&
+            elmnOrder > fromSocketOrder) {
           iter.elmn.style.order = (elmnOrder - 1).toString()
           newOrders.push(
-            {timerId: iter.timerId, order: (elmnOrder - 1).toString()}
+            { timerId: iter.timerId, order: (elmnOrder - 1).toString() }
           );
-        }
-        else {
+        } else {
           newOrders.push(
-            {timerId: iter.timerId, order: (elmnOrder).toString()}
+            { timerId: iter.timerId, order: (elmnOrder).toString() }
           )
         }
       }
     }
     fromSocket.style.order = targetSocketOrder
     this.setState({orders: newOrders})
-    for( let iter of hitboxes) {
+    for (let iter of hitboxes) {
       let rectIter = iter.elmn.getBoundingClientRect()
       let newTop =
         rectIter.top
@@ -671,10 +669,10 @@ class App extends React.Component {
     }
   }
 
-  render() {
+  render () {
     return (
        <div className="alarm-container">
-         { 
+         {
            this.state.timers.map((item, i) => (
                <Timer key={item.timerId}
                  message={item.alarmMessage}
@@ -696,7 +694,7 @@ class App extends React.Component {
            ))
          }
          { this.state.timers.length < timerColors.length &&
-         <div className="add-timer" onClick={this.addTimer}>
+         <div className="add-timer has-grey-color-transition" onClick={this.addTimer}>
            <i className="fas fa-plus plus-symbol"></i>
          </div>
          }
@@ -709,11 +707,11 @@ class App extends React.Component {
 };
 
 class Timer extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.mountStyle = this.mountStyle.bind(this)
     this.unMountStyle = this.unMountStyle.bind(this)
-    this.state = { 
+    this.state = {
       style: {
         opacity: 0,
         transition: 'all 2s ease',
@@ -721,11 +719,11 @@ class Timer extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     setTimeout(this.mountStyle, 10)
-    let elem = document.getElementById(this.props.timerId)
-    let paren = elem.parentElement
-    let parenRect = paren.getBoundingClientRect()
+    const elem = document.getElementById(this.props.timerId)
+    const paren = elem.parentElement
+    const parenRect = paren.getBoundingClientRect()
     elem.style.width = (parenRect.right - parenRect.left) + 'px'
   }
 
@@ -733,7 +731,7 @@ class Timer extends React.Component {
     this.setState({
       style: {
         opacity: 0,
-        transition: 'all 1s ease',
+        transition: 'all 1s ease'
       }
     })
   }
@@ -742,7 +740,7 @@ class Timer extends React.Component {
     this.setState({
       style: {
         opacity: 1,
-        transition: 'all 1s ease',
+        transition: 'all 1s ease'
       }
     })
   }
@@ -765,7 +763,8 @@ class Timer extends React.Component {
             <div onMouseDown={(e) => this.props.gripClick(e, this.props.timerId)}>
               <i className='fas fa-grip-horizontal grip-symbol'></i>
             </div>
-            <div onClick={() => this.props.deleteTimer(this.props.timerId)}>
+            <div className="has-color-transition"
+                 onClick={() => this.props.deleteTimer(this.props.timerId)}>
               <i className="far fa-times-circle close-symbol"></i>
             </div>
           </div>
