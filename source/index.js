@@ -1,10 +1,11 @@
 import './style.css'
+import './bootstrap.min.css'
 import Button from 'react-bootstrap/Button'
 
 import * as React from 'react'
 import { render } from 'react-dom'
 
-const gongURL = 'https://assets.codepen.io/5324539/MUSCPerc_Cymbale+ride+20+6+%28ID+2328%29_BSB.wav'
+const gongURL = 'https://ferzeg.com/public/cymbal.wav'
 
 const synth = window.speechSynthesis
 

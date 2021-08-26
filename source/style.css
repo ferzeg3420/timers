@@ -1,10 +1,3 @@
-@font-face {
-  font-family: 'seven-seg';
-  src: url('https://assets.codepen.io/5324539/DSEG14Classic-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .has-color-transition {
   transition: color 0.5s ease-in-out;
 }
